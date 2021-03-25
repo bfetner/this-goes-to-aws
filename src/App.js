@@ -1,25 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Switch, 
+  Link, 
+  Redirect 
+} from 'react-router-dom';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//pages
+import MainPage from './pages'
+import NotFoundPage from './pages/404'
+import Malcolm from './pages/malcolm'
+
+class App extends Component {
+  render() {
+    return <Router>
+      <Switch>
+        <Route exact path='/' component ={MainPage}/>
+        <Route exact path='/404' component={NotFoundPage} />
+        <Route exact path='/malcolm' component ={Malcolm}/>
+        <Redirect to ='/404'/>
+      </Switch>
+    </Router>
+      /*
+        <Route exact path='/malcolm' component ={Malcolm}/>
+        <Route exact path='/bryan' component ={Bryan}/>
+        <Route exact path='/rebecca' component ={Rebecca}/>
+        <Route exact path='/luong' component ={Luong}/>
+        <Route exact path='/vishakha' component ={Vishakha}/>
+        <Route exact path='/ashwini' component ={Ashwini}/>
+      */
+    
+  }
 }
 
 export default App;
